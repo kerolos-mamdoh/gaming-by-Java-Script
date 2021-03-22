@@ -1,0 +1,236 @@
+<html>
+    <head>
+      
+        <style>
+            body
+            {
+                background-color: lightblue;
+            }
+            .center {
+                        display: block;
+                        margin-left: auto;
+                         margin-right: auto;
+                        width: 50%;
+                    }
+         input[type=number]:focus 
+         {
+             background-color: lightblue;
+             border: 3px solid #555;
+        }
+        input[type=number]
+        {
+            width:300;
+            height: 30;
+        }
+        input[type=submit]
+        {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;;
+            
+        }
+         
+            img
+            {
+                width: 300;
+                height: 200;  
+                
+            }
+           
+            button
+            {
+                width: 100;
+                height: 50;
+                background-color: pink;
+                color:black;
+                text-align: center;
+                font-size: 20;
+                display: inline-block;
+                padding: 15px 32px;
+                text-decoration: none;
+                border: none;
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            }
+            button:hover
+            {
+                background-color:gray;
+                box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+            }
+            button:active
+            {
+                transform: translateY(4px);
+                opacity: 1
+            }
+            button:after 
+            {
+                    content: "";
+                    background: #f1f1f1;
+                    display: block;
+                    position: absolute;
+                    padding-top: 100%;
+                    padding-left: 150%;
+                    margin-left: -20px !important;
+                    margin-top: -120%;
+                    opacity: 0;
+                    transition: all 0.8s
+                }
+
+                button:active:after
+                 {
+                padding: 0;
+                margin: 0;
+                opacity: 1;
+                transition: 0s
+                }
+                body 
+            {
+                font-family: Arial, Helvetica, sans-serif;
+                margin: 0;
+             }
+            .navbar 
+            {
+                overflow: hidden;
+                background-color: #333;
+               
+            }
+
+/* Style the navigation bar links */
+            .navbar a 
+            {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            }
+
+            /* Right-aligned link */
+            .navbar a.right {
+            float: right;
+            }
+
+            /* Change color on hover */
+            .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+            }
+            p
+            {
+                font-size: 20;  
+            }
+        </style>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta content="utf-8" http-equiv="encoding">
+    </head>
+    <body>
+        <div class="navbar">
+            <a href="game1.html">Learning English</a>
+            <a href="contact.html">Contact </a>
+            
+            <a href="home.html" class="right">Home</a>
+          </div>
+
+        <dvi class="center">
+        <h1>Enter Number Of Characters</h1>
+        
+             <input type="number" id="numberofcharacter"><br><br>
+            <input  type ='submit' value= 'ok'  onclick="show()">
+        </dvi>
+        <div id='mybutton'></div>
+        
+        <div id="imgges">
+
+        </div>
+     
+    
+        <script>
+            arrofchracter=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','y','v','w','x','y','z'];
+            
+            
+            function show()
+            {
+                var h=document.getElementById('numberofcharacter').value;
+                arrofnumbers=[];
+               
+
+
+                 for(var i=0; i<h;i++)
+                 {
+                     var n=Math.floor((Math.random() * 26) )
+                     arrofnumbers.push(n);
+                 }
+
+
+
+
+                 for(var i=0;i<arrofnumbers.length;i++)
+                  {
+                      num=arrofnumbers[i]
+                     
+                    
+                    var node = document.createElement("button");
+                    var textnode = document.createTextNode(arrofchracter[num]);
+                    node.appendChild(textnode);
+                    document.getElementById("mybutton").appendChild(node);
+                    node.className=arrofchracter[num];
+                      
+                  
+
+                  }
+
+                  var holdbuttons =document.getElementsByTagName("button");
+                  
+                  for(var i=0; i<holdbuttons.length; i++)
+                  {
+                     holdbuttons[i].addEventListener('click', function(e){
+                        var setimg=document.getElementById('imgges')
+                        var x = document.createElement("IMG");
+                        x.src='images/'+e.target.className+".jpg";
+                        setimg.appendChild(x);
+                        var v = document.createElement("AUDIO");
+                        if (v.canPlayType("audio/mpeg")) 
+                        {
+                         v.setAttribute("src",'voices/'+e.target.className+".mp3");
+                         } 
+                         else
+                          {
+                            v.setAttribute("src",'voices/'+e.target.className+".ogg");
+                          }  
+
+                         v.setAttribute("controls", "controls");
+                         v.setAttribute('alt','no voice for this photo')
+                        
+                         setimg.appendChild(v);
+
+                     })
+                   
+                    // if(holdbuttons[i].className=='z')
+                    // {
+                    //  holdbuttons[i].addEventListener('click',function(e)
+                    //  {
+                    //     var setimg=document.getElementById('imgges')
+                    // var x = document.createElement("IMG");
+                    //  x.setAttribute("src", "images/z.jpg");
+                    //  setimg.appendChild(x);
+                    //  });
+                    // }
+                }
+
+
+
+                
+
+                  
+
+
+            }
+                
+        </script>
+    </body>
+
+</html>
